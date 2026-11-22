@@ -141,7 +141,8 @@ function readRegions() {
   const head = [...document.querySelectorAll("header, [role=banner]")].find((el) => visible(el) && el.getBoundingClientRect().top + window.scrollY < 200);
   const foots = [...document.querySelectorAll("footer, [role=contentinfo]")].filter(visible);
   const foot = foots[foots.length - 1];
-  if (head) regions.push({ kind: "head", label: "Header", heading: nameOf(head), aliases: ["header", "top"], rect: box(head) });
+  if (head) regions.push({ kind: "head", label: "Header", heading: nameOf(head), aliases: ["header", "top", "kopf", "oben"], rect: box(head) });
+  // Aliases are English and German, so regions can be addressed in either language.
   // Sections: children of main, otherwise of body. If there is only one container, go one level deeper.
   let container = document.querySelector("main, [role=main]") || document.body;
   const sectionsOf = (c) =>
@@ -153,9 +154,9 @@ function readRegions() {
   }
   sections.forEach((el, i) => {
     const heading = nameOf(el);
-    regions.push({ kind: "section", label: heading || `Section ${i + 1}`, heading, aliases: [...new Set([el.id, el.classList[0]].filter(Boolean))], rect: box(el) });
+    regions.push({ kind: "section", label: heading || `Section ${i + 1}`, heading, aliases: [...new Set([`section ${i + 1}`, `abschnitt ${i + 1}`, `bereich ${i + 1}`, el.id, el.classList[0]].filter(Boolean))], rect: box(el) });
   });
-  if (foot) regions.push({ kind: "foot", label: "Footer", heading: nameOf(foot), aliases: ["footer", "bottom"], rect: box(foot) });
+  if (foot) regions.push({ kind: "foot", label: "Footer", heading: nameOf(foot), aliases: ["footer", "bottom", "fuß", "fuss", "unten"], rect: box(foot) });
   return { height: document.documentElement.scrollHeight, title: document.title, regions };
 }
 

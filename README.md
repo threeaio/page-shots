@@ -76,7 +76,8 @@ type Region = {
   kind: "head" | "section" | "foot";
   label: string;            // "Header", "Footer", the section heading, or "Section 3"
   heading: string | null;   // from aria-labelledby, aria-label or the first h1–h3
-  aliases: string[];        // "header"/"top", "footer"/"bottom", or the section's id and first class
+  aliases: string[];        // English and German: header/top/kopf/oben, footer/bottom/fuß/fuss/unten,
+                            // section N/abschnitt N/bereich N plus the section's id and first class
   rect: [x: number, y: number, w: number, h: number]; // image pixels (CSS pixels × scale)
 };
 ```

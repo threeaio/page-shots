@@ -45,6 +45,12 @@ test("long page: header, five sections and footer with sensible labels and y-ran
   assert.equal(view.regions[0].rect[1], 0, "header starts at the top");
   assert.equal(view.regions[6].heading, "Acme Inc.");
   assert.ok(view.regions[2].aliases.includes("features"));
+  // English and German aliases, so regions can be named in either language.
+  const aliases = (i) => view.regions[i].aliases;
+  for (const a of ["header", "top", "kopf", "oben"]) assert.ok(aliases(0).includes(a), `header alias ${a}`);
+  for (const a of ["footer", "bottom", "fuß", "fuss", "unten"]) assert.ok(aliases(6).includes(a), `footer alias ${a}`);
+  for (const a of ["section 4", "abschnitt 4", "bereich 4"]) assert.ok(aliases(4).includes(a), `unnamed section alias ${a}`);
+  for (const a of ["section 2", "abschnitt 2", "bereich 2"]) assert.ok(aliases(2).includes(a), `named section alias ${a}`);
   let lastBottom = 0;
   for (const r of view.regions) {
     const [x, y, w, h] = r.rect;

@@ -16,7 +16,7 @@ Pass an absolute `<out-dir>`; the image paths in the output are built from it.
 ## Output
 
 - `<out-dir>/desktop.png` (1440 px wide) and `mobile.png` (780 px: 390 at device scale 2), full page, cut at the bottom after `--max-height` CSS pixels.
-- `<out-dir>/regions.json`: per view `image`, `scale`, `regions` with `kind` (head, section, foot), `label`, `heading`, `aliases`, `rect` [x, y, w, h] in image pixels.
+- `<out-dir>/regions.json`: per view `image`, `scale`, `regions` with `kind` (head, section, foot), `label`, `heading`, `aliases` (English and German, e.g. header/kopf, footer/fuß, section 2/abschnitt 2), `rect` [x, y, w, h] in image pixels.
 - stdout, one line of JSON: `url`, `title`, `images` (each `view`, `path`, `width`, `height`, `regions`, `cut`), `consent` (detected provider and result, or null).
 - stderr: timings per step. Typically 5 to 30 s for both views.
 
