@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Consent page</title>
+<style>
+  html.locked { overflow: hidden; }
+  body { margin: 0; font: 18px/1.5 sans-serif; background: #f4f1ea; color: #1d1d1b; }
+  .recipe { height: 600px; background: #3366cc; color: #f4f1ea; padding: 24px; }
+  .filler { height: 1600px; }
+  .consent-backdrop { position: fixed; inset: 0; background: rgba(20, 20, 20, 0.6); }
+  #privacy-layer { position: fixed; top: 200px; left: 50%; width: 480px; margin-left: -240px; height: 300px; background: #ff00ff; padding: 24px; box-sizing: border-box; }
+</style>
+</head>
+<body>
+  <article class="cookie-recipe recipe"><h1>Grandma's cookie recipe</h1><p>Flour, butter, sugar.</p></article>
+  <div class="filler"></div>
+  <script>
+    // A home-made consent dialog that no known CMP rule matches; it appears shortly after load and locks scrolling.
+    setTimeout(() => {
+      document.documentElement.classList.add("locked");
+      const backdrop = document.createElement("div");
+      backdrop.className = "consent-backdrop";
+      const dialog = document.createElement("div");
+      dialog.id = "privacy-layer";
+      dialog.className = "consent-dialog";
+      dialog.setAttribute("role", "dialog");
+      dialog.innerHTML = "<p>We value your privacy.</p><button id='accept'>Accept all</button> <button id='reject'>Reject all</button>";
+      const close = () => { backdrop.remove(); dialog.remove(); document.documentElement.classList.remove("locked"); };
+      dialog.querySelector("#accept").onclick = close;
+      dialog.querySelector("#reject").onclick = close;
+      document.body.append(backdrop, dialog);
+    }, 200);
+  </script>
+</body>
+</html>

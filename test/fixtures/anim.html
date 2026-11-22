@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Animations</title>
+<style>
+  body { margin: 0; background: #f4f1ea; height: 1000px; }
+  .box { position: absolute; top: 0; width: 200px; height: 200px; }
+  @keyframes reveal { from { background: #cc0000; } to { background: #00aa44; } }
+  @keyframes blink { 0% { background: #cc0000; } 50% { background: #0033cc; } }
+  #reveal { left: 0; background: #cc0000; animation: reveal 60s forwards; }
+  #blink { left: 220px; background: #886600; animation: blink 0.4s steps(1) infinite; }
+  #fade { left: 440px; background: #cc0000; transition: background-color 30s linear; }
+  #fade.on { background: #00aa44; }
+  #reduced { left: 660px; background: #cc0000; }
+  @media (prefers-reduced-motion: reduce) { #reduced { background: #00aa44; } }
+</style>
+</head>
+<body>
+  <div class="box" id="reveal"></div>
+  <div class="box" id="blink"></div>
+  <div class="box" id="fade"></div>
+  <div class="box" id="reduced"></div>
+  <script>requestAnimationFrame(() => requestAnimationFrame(() => document.getElementById("fade").classList.add("on")));</script>
+</body>
+</html>

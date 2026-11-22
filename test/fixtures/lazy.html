@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Lazy images</title>
+<style>
+  body { margin: 0; background: #f4f1ea; }
+  img { display: block; width: 200px; height: 200px; }
+</style>
+</head>
+<body>
+  <div style="height: 2500px"></div>
+  <img id="native" loading="lazy" src="/img/0033cc.png?delay=300" alt="">
+  <div style="height: 1800px"></div>
+  <img id="observed" data-src="/img/00aa44.png?delay=600" alt="">
+  <div style="height: 1500px"></div>
+  <script>
+    // Classic lazy loader: the real source is set only when the image comes into view.
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) if (e.isIntersecting) { e.target.src = e.target.dataset.src; io.unobserve(e.target); }
+    });
+    document.querySelectorAll("img[data-src]").forEach((img) => io.observe(img));
+  </script>
+</body>
+</html>

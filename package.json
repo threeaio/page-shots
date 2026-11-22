@@ -1,0 +1,26 @@
+{
+  "name": "page-shots",
+  "version": "1.0.0",
+  "description": "Claude Code skill: full-page website screenshots (desktop and mobile) with named regions in regions.json",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "page-shots": "scripts/install.mjs"
+  },
+  "files": [
+    "SKILL.md",
+    "README.md",
+    "LICENSE",
+    "scripts/"
+  ],
+  "scripts": {
+    "test": "node --test test/*.test.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@duckduckgo/autoconsent": "16.57.0",
+    "playwright": "1.63.0"
+  }
+}
