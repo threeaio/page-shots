@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Checks a regions.json against the contract that readers such as the Canvas app rely on:
+// Checks a regions.json against the contract that readers such as Sideview rely on:
 //   { source?: string, views: Record<string, { image: string, scale: number, regions: Region[] }> }
 //   Region = { label: string, kind: "head" | "section" | "foot", heading: string | null,
 //              aliases: string[], rect: [x, y, w, h] }   (rect in image pixels)

@@ -11,7 +11,7 @@ One command gives you:
 - animations and transitions at their end state, videos paused, reduced motion requested (unless `--motion`)
 - `regions.json` with the header, sections and footer as rectangles in image pixels
 
-It works on its own and pairs well with the Canvas app, which reads `regions.json` next to the images.
+It works on its own and pairs well with [Sideview](https://github.com/threeaio/sideview), which reads `regions.json` next to the images.
 
 ## Install
 

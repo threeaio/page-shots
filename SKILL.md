@@ -20,9 +20,9 @@ Pass an absolute `<out-dir>`; the image paths in the output are built from it.
 - stdout, one line of JSON: `url`, `title`, `images` (each `view`, `path`, `width`, `height`, `regions`, `cut`), `consent` (detected provider and result, or null).
 - stderr: timings per step. Typically 5 to 30 s for both views.
 
-## With the Canvas app
+## With Sideview
 
-Works on its own. It pairs well with the Canvas app: hand both image paths to Canvas; it reads `regions.json` next to the images, so regions like "the header" can be addressed by name on any website.
+Works on its own. It pairs well with [Sideview](https://github.com/threeaio/sideview): hand both image paths to Sideview; it reads `regions.json` next to the images, so regions like "the header" can be addressed by name on any website.
 
 ## Limits
 
